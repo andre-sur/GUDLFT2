@@ -57,3 +57,23 @@ def purchasePlaces():
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
+
+try:
+    places_required = int(request.form['places'])
+except ValueError:
+    flash("Nombre de places invalide.")
+    return render_template('welcome.html', club=club, competitions=competitions)
+
+if places_required > 12:
+    flash("Maximum 12 places.")
+    return render_template('welcome.html', club=club, competitions=competitions)
+
+club_points = int(club['points'])
+if places_required > club_points:
+    flash("Pas assez de points.")
+    return render_template('welcome.html', club=club, competitions=competitions)
+
+available_places = int(competition['numberOfPlaces'])
+if places_required > available_places:
+    flash("Pas assez de places.")
+    return render_template('welcome.html', club=club, competitions=competitions)
