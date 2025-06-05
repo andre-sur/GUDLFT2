@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Statistiques d'erreurs</title>
+</head>
+<body>
+    <h2>Statistiques des erreurs de réservation</h2>
+    <ul>
+        {% for type, count in errors.items() %}
+            <li><strong>{{ type }}</strong> : {{ count }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+</body>
+</html>
