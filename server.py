@@ -51,14 +51,6 @@ def purchasePlaces():
     flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
 
-
-# TODO: Add route for points display
-
-
-@app.route('/logout')
-def logout():
-    return redirect(url_for('index'))
-
 try:
     places_required = int(request.form['places'])
 except ValueError:
@@ -78,3 +70,11 @@ available_places = int(competition['numberOfPlaces'])
 if places_required > available_places:
     flash("Pas assez de places.")
     return render_template('welcome.html', club=club, competitions=competitions)
+
+
+# TODO: Add route for points display
+
+
+@app.route('/logout')
+def logout():
+    return redirect(url_for('index'))
