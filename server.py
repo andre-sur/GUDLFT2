@@ -60,6 +60,12 @@ def purchasePlaces():
 def logout():
     return redirect(url_for('index'))
 
+
 @app.route('/errors')
 def showErrors():
     return render_template('errors.html', errors=error_counter)
+
+@app.route('/points', methods=['GET'])
+def showPoints():
+    return render_template('points.html', clubs=clubs)
+
